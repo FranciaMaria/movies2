@@ -3,4 +3,5 @@
 	<p>Search Results: {{ term }}</p>
 	<hr>
 	<app-movie-row *ngFor="let movie of movies" [movieRow] = "movie"></app-movie-row>
+	<p *ngIf="movies.length === 0"><strong>No Movies Found</strong></p>
 </div>
