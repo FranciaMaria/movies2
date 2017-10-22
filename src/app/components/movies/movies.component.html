@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Movies</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Movies List</h2>
+  <p>Selected films number: {{ counter }} </p>
+   <hr>
+    <button class="btn btn-primary" [class.active]="order === 'name'"
+    (click)="setOrder('name')">
+        Sort by name
+    </button>
+    <button class="btn btn-primary" [class.active]="order === 'duration'"
+    (click)="setOrder('duration')">
+        Sort by duration
+    </button>
+
+  <button class="btn btn-primary" (click)="selectedAll = false; selectedAny = false;" (click)="deselectAllCounter()">
+        Deselect all
+    </button>
+    <button class="btn btn-primary" (click)="selectedAll = true" (click)="selectAllCounter()">
+        Select all
+    </button>
+    <hr>
+    <app-movie-row (onSelected)="onSelected($event)" [selectedAny]="selectedAny" [selectedAll]="selectedAll" *ngFor="let movie of movies | orderBy: order : reverse | paginate: { itemsPerPage: 5, currentPage: page, id: '1' } " [movieRow]="movie">
+    </app-movie-row>
+    <hr>
+</div>
+
+</body>
+</html>
+
+<pagination-controls (pageChange)="page = $event" id="1" maxSize="5" directionLinks="true" autoHide="true"></pagination-controls>
+

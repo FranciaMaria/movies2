@@ -1,0 +1,6 @@
+<div class="container">
+	<hr>
+	<p>Search Results: {{ term }}</p>
+	<hr>
+	<app-movie-row *ngFor="let movie of movies" [movieRow] = "movie"></app-movie-row>
+</div>

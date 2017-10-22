@@ -1,0 +1,11 @@
+<ul>
+	<li class="list-group-item">ID: {{movieRow.id}}</li>
+	<li class="list-group-item">Name: {{movieRow.name}} <strong *ngIf="selected">SELECTED</strong><br></li>
+	<li class="list-group-item">Director: {{movieRow.director}}</li>
+	<li class="list-group-item">Image url: {{movieRow.imageUrl}}</li>
+	<li class="list-group-item">Duration [min]: {{movieRow.duration}}</li>
+	<li class="list-group-item">Release Date: {{movieRow.releaseDate  | date: "d MMMM yyyy"}}</li>
+	<li class="list-group-item">Genres: {{movieRow.genres}}</li>
+
+	<button class="btn btn-secondary" (click)="addMovie(true)" [disabled]="selected">Select</button>
+</ul>
