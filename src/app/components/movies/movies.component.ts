@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { MoviesService } from '../../shared/services/movies.service';
 import { Movie } from '../../shared/models/movie.model';
 
@@ -16,8 +17,35 @@ export class MoviesComponent implements OnInit {
   private order = 'name';
   private reverse = false;
 
+  
 
-  constructor(private moviesService: MoviesService) { }
+  constructor(private moviesService: MoviesService, private injector: Injector) { 
+
+    this.moviesService = this.injector.get(MoviesService);
+    this.moviesService.getMovies().subscribe(
+      data => {
+        this.movies = data;
+      },
+      (err: HttpErrorResponse) => {
+        alert(`Backend returned code ${err.status} with message: ${err.error}`);
+      }
+    );
+  }
+
+  remove(movie) {
+    this.moviesService.removeMovie(movie)
+        .subscribe();
+  }
+
+  submitMovie(movie: Movie) {
+    if (movie.id) {
+      this.moviesService.editMovie(movie)
+        .subscribe();
+    } else {
+      this.moviesService.addMovie(movie)
+        .subscribe();
+    }
+  }
 
   ngOnInit() {
   	this.moviesService.getMovies().subscribe(data =>{

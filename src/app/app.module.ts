@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchPageComponent } from './components/search/search-page/search-page.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { Ng2PaginationModule } from 'ng2-pagination';
+import { MovieFormComponent } from './components/movies/movie-form/movie-form.component';
 
 const appRoutes: Routes = [
   {
@@ -26,6 +27,10 @@ const appRoutes: Routes = [
     path: 'search/:term',
     component: SearchPageComponent
   },
+  {
+    path: '/add',
+    component: MovieFormComponent
+  },
 ];
 
 
@@ -36,7 +41,8 @@ const appRoutes: Routes = [
     MoviesComponent,
     MovieRowComponent,
     SearchComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    MovieFormComponent
   ],
   imports: [
     FormsModule,

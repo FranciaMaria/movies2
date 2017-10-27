@@ -1,0 +1,85 @@
+<form #movieForm="ngForm" (ngSubmit)="submitMovie(newMovie); movieForm.reset()">
+  <div class="form-group">
+    <label>Name</label>
+    <input #name="ngModel" [(ngModel)]="newMovie.name" name='name' type="text" class="form-control" required minlength="2">
+
+    <div *ngIf="name.invalid && (name.dirty || name.touched)"
+     class="alert alert-danger">
+      <div *ngIf="name.errors.required">
+        First Name is required.
+      </div>
+      <div *ngIf="name.errors.minlength">
+        Name must be at least 2 characters long.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Director</label>
+    <input #director="ngModel" [(ngModel)]="newMovie.director" name='director' type="text" class="form-control" required minlength="2">
+
+    <div *ngIf="director.invalid && (director.dirty || director.touched)"
+     class="alert alert-danger">
+      <div *ngIf="director.errors.required">
+        Director is required.
+      </div>
+      <div *ngIf="director.errors.minlength">
+        Director must be at least 2 characters long.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Image url</label>
+    <input #imageUrl="ngModel" [(ngModel)]="newMovie.imageUrl" name='imageUrl' type="text" class="form-control" required url>
+
+    <div *ngIf="imageUrl.invalid && (imageUrl.dirty || imageUrl.touched)"
+     class="alert alert-danger">
+      <div *ngIf="imageUrl.errors.required">
+        Image url is required.
+      </div>
+      <div *ngIf="imageUrl.errors.url">
+        Please provide valid image url.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Duration</label>
+    <input #duration="ngModel" [(ngModel)]="newMovie.duration" name='duration' type="number" class="form-control" required>
+
+    <div *ngIf="duration.invalid && (duration.dirty || duration.touched)"
+     class="alert alert-danger">
+      <div *ngIf="duration.errors.required">
+        Duration is required.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Release Date</label>
+    <input #releaseDate="ngModel" [(ngModel)]="newMovie.releaseDate" name='releaseDate' type="number" class="form-control" required>
+
+    <div *ngIf="releaseDate.invalid && (releaseDate.dirty || releaseDate.touched)"
+     class="alert alert-danger">
+      <div *ngIf="releaseDate.errors.required">
+        Release Date is required.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Genres</label>
+    <input #genres="ngModel" [(ngModel)]="newMovie.genres" name='imageUrl' type="text" class="form-control" required>
+
+    <div *ngIf="genres.invalid && (genres.dirty || genres.touched)"
+     class="alert alert-danger">
+      <div *ngIf="genres.errors.required">
+        Genres are required.
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="btn"
+    (click)="movieForm.reset()"
+    [disabled]="movieForm.form.pristine"
+  >Reset</button>
+  <button type="submit" class="btn btn-primary"
+    [disabled]="!movieForm.form.valid"
+  >{{ newMovie.id ? "Edit Movie" : "Add Movie" }}</button>
+</form>
