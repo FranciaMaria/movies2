@@ -12,6 +12,7 @@ import { SearchPageComponent } from './components/search/search-page/search-page
 import { OrderModule } from 'ngx-order-pipe';
 import { Ng2PaginationModule } from 'ng2-pagination';
 import { MovieFormComponent } from './components/movies/movie-form/movie-form.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   {
@@ -28,7 +29,7 @@ const appRoutes: Routes = [
     component: SearchPageComponent
   },
   {
-    path: '/add',
+    path: 'add',
     component: MovieFormComponent
   },
 ];
@@ -49,6 +50,7 @@ const appRoutes: Routes = [
     BrowserModule,
     OrderModule,
     Ng2PaginationModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes),
   ],

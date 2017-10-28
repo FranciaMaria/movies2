@@ -6,7 +6,7 @@
     <div *ngIf="name.invalid && (name.dirty || name.touched)"
      class="alert alert-danger">
       <div *ngIf="name.errors.required">
-        First Name is required.
+        Name is required.
       </div>
       <div *ngIf="name.errors.minlength">
         Name must be at least 2 characters long.
@@ -54,7 +54,7 @@
   </div>
   <div class="form-group">
     <label>Release Date</label>
-    <input #releaseDate="ngModel" [(ngModel)]="newMovie.releaseDate" name='releaseDate' type="number" class="form-control" required>
+    <input #releaseDate="ngModel" [(ngModel)]="newMovie.releaseDate" name='releaseDate' type="date" class="form-control" required>
 
     <div *ngIf="releaseDate.invalid && (releaseDate.dirty || releaseDate.touched)"
      class="alert alert-danger">
@@ -65,7 +65,7 @@
   </div>
   <div class="form-group">
     <label>Genres</label>
-    <input #genres="ngModel" [(ngModel)]="newMovie.genres" name='imageUrl' type="text" class="form-control" required>
+    <input #genres="ngModel" [(ngModel)]="newMovie.genres" name='genres' type="text" class="form-control" required>
 
     <div *ngIf="genres.invalid && (genres.dirty || genres.touched)"
      class="alert alert-danger">

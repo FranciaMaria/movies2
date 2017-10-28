@@ -11,6 +11,7 @@
 <body>
 
 <div class="container">
+  <app-movie-form  #movieForm (onSubmit)="submitMovie($event)"></app-movie-form>
   <h2>Movies List</h2>
   <p>Selected films number: {{ counter }} </p>
    <hr>
