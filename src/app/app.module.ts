@@ -13,6 +13,8 @@ import { OrderModule } from 'ngx-order-pipe';
 import { Ng2PaginationModule } from 'ng2-pagination';
 import { MovieFormComponent } from './components/movies/movie-form/movie-form.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/auth/login/login.component';
+import { AuthService } from './shared/services/auth.service';
 
 const appRoutes: Routes = [
   {
@@ -32,6 +34,10 @@ const appRoutes: Routes = [
     path: 'add',
     component: MovieFormComponent
   },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
 ];
 
 
@@ -43,7 +49,8 @@ const appRoutes: Routes = [
     MovieRowComponent,
     SearchComponent,
     SearchPageComponent,
-    MovieFormComponent
+    MovieFormComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,
@@ -59,7 +66,7 @@ const appRoutes: Routes = [
     SearchComponent,
     SearchPageComponent
   ],
-  providers: [MoviesService],
+  providers: [MoviesService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

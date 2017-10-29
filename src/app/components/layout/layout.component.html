@@ -13,7 +13,11 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" routerLink="/movies" routerLinkActive="active">Movies</a>
+      <ul>
+      <li><a class="navbar-brand" routerLink="/movies" routerLinkActive="active">Movies</a></li>
+      <li *ngIf="!auth.isAuthenticated"><a class="navbar-brand" routerLink="/login" routerLinkActive="active">Login</a></li>
+      <li *ngIf="auth.isAuthenticated"><a class="navbar-brand" (click)="auth.logout()">Logout</a></li>
+      </ul>
     </div>
     <form class="navbar-form navbar-left">
       <app-search></app-search>

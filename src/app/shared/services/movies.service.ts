@@ -3,6 +3,7 @@ import { Observer, Observable } from 'rxjs';
 import { Movie } from '../../shared/models/movie.model';
 //import { exampleMovies } from '../../shared/examples';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../services/auth.service';
 
 
 @Injectable()
@@ -10,7 +11,7 @@ export class MoviesService {
 
   private movies: Movie[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
  /* public getMovies(){
 
@@ -98,10 +99,10 @@ export class MoviesService {
         'releaseDate': movie.releaseDate,
         'genres': movie.genres
         
-      }
-      /*{
+      },
+      {
         headers: this.authService.getRequestHeaders(),
-      }*/)
+      })
         .subscribe(
           (c: any) => {
             let newC = new Movie(c.id, c.name, c.director, c.imageUrl, c.duration, c.releaseDate, c.genres);
@@ -123,10 +124,10 @@ export class MoviesService {
         'duration': movie.duration,
         'releaseDate': movie.releaseDate,
         'genres': movie.genres,
-      }
-      /*{
+      },
+      {
         headers: this.authService.getRequestHeaders(),
-      }*/)
+      })
         .subscribe(
           (movie: any) => {
             let newMovie = new Movie(movie.id, movie.name, movie.director, movie.imageUrl, movie.duration, movie.releaseDate, movie.genres);
@@ -152,10 +153,10 @@ export class MoviesService {
   public removeMovie(movie: Movie)
   {
     return new Observable((o: Observer<any>) => {
-      this.http.delete('http://localhost:8000/api/movies/' + movie.id
-        /*{
+      this.http.delete('http://localhost:8000/api/movies/' + movie.id,
+        {
           headers: this.authService.getRequestHeaders(),
-        }*/)
+        })
         .subscribe(
           () => {
             const index = this.movies.indexOf(movie);
