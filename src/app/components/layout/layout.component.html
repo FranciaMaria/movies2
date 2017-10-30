@@ -17,6 +17,8 @@
       <li><a class="navbar-brand" routerLink="/movies" routerLinkActive="active">Movies</a></li>
       <li *ngIf="!auth.isAuthenticated"><a class="navbar-brand" routerLink="/login" routerLinkActive="active">Login</a></li>
       <li *ngIf="auth.isAuthenticated"><a class="navbar-brand" (click)="auth.logout()">Logout</a></li>
+      <li *ngIf="!auth.isAuthenticated"><a class="navbar-brand" routerLink="/register" routerLinkActive="active">Register</a></li>
+      
       </ul>
     </div>
     <form class="navbar-form navbar-left">

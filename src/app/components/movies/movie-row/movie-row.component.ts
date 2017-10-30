@@ -17,7 +17,7 @@ export class MovieRowComponent implements OnInit, OnChanges {
 	@Input() selectedAny;
 
 	@Input() selectedAll: boolean;
-    @Input() deselectAll: boolean;
+  @Input() deselectAll: boolean;
 
 
     @Output() onSelected = new EventEmitter<boolean>();

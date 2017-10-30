@@ -15,6 +15,9 @@ import { MovieFormComponent } from './components/movies/movie-form/movie-form.co
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/auth/login/login.component';
 import { AuthService } from './shared/services/auth.service';
+import { RegisterComponent } from './components/auth/register/register.component';
+import { RegisterFormComponent } from './components/auth/register/register-form/register-form.component';
+import { CustomFormsModule } from 'ng2-validation'
 
 const appRoutes: Routes = [
   {
@@ -38,6 +41,10 @@ const appRoutes: Routes = [
     path: 'login',
     component: LoginComponent
   },
+  {
+    path: 'register',
+    component: RegisterFormComponent
+  },
 ];
 
 
@@ -50,7 +57,9 @@ const appRoutes: Routes = [
     SearchComponent,
     SearchPageComponent,
     MovieFormComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    RegisterFormComponent
   ],
   imports: [
     FormsModule,
@@ -58,6 +67,7 @@ const appRoutes: Routes = [
     OrderModule,
     Ng2PaginationModule,
     HttpClientModule,
+    CustomFormsModule,
     RouterModule.forRoot(
       appRoutes),
   ],

@@ -27,7 +27,7 @@ export class MoviesComponent implements OnInit {
         this.movies = data;
       },
       (err: HttpErrorResponse) => {
-        alert(`Backend returned code ${err.status} with message: ${err.error}`);
+        alert('Backend returned code ${err.status} with message: ${err.error}');
       }
     );
   }
