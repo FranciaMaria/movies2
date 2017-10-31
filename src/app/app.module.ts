@@ -20,6 +20,8 @@ import { RegisterFormComponent } from './components/auth/register/register-form/
 import { CustomFormsModule } from 'ng2-validation';
 import { MovieResolver } from './shared/resolvers/movie.resolver';
 import { MovieDetailsComponent } from './components/movies/movie-details/movie-details.component';
+import { AuthGuard } from './shared/guards/auth.guard';
+import { GuestGuard } from './shared/guards/guest.guard';
 
 
 const appRoutes: Routes = [
@@ -30,6 +32,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'movies',
+    canActivate: [AuthGuard],
     component: MoviesComponent
   },
   {
@@ -49,10 +52,12 @@ const appRoutes: Routes = [
   },
   {
     path: 'login',
+    canActivate: [GuestGuard],
     component: LoginComponent
   },
   {
     path: 'register',
+    canActivate: [GuestGuard],
     component: RegisterFormComponent
   },
 ];
@@ -87,7 +92,7 @@ const appRoutes: Routes = [
     SearchComponent,
     SearchPageComponent
   ],
-  providers: [MoviesService, AuthService, MovieResolver],
+  providers: [MoviesService, AuthService, MovieResolver, GuestGuard, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
