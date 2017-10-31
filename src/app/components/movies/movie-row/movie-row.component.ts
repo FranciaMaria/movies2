@@ -2,31 +2,38 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angu
 import { Movie } from '../../../shared/models/movie.model';
 
 @Component({
-  selector: 'app-movie-row, [movieRow]',
+  selector: '[movieRow], app-movie-row',
   templateUrl: './movie-row.component.html',
   styleUrls: ['./movie-row.component.css']
 })
 export class MovieRowComponent implements OnInit, OnChanges {
 
-	private movie: any;
-  	private select: any;
-  	private deselect: any;
+	private movie: Movie;
+  private select: any;
+  private deselect: any;
 
-	@Input() movieRow: Movie;
+  private isSelected: number;
+  private selected = false;
+  private movies: Movie[] = [];
+
+
+	//@Input() movieRow: Movie;
 
 	@Input() selectedAny;
 
 	@Input() selectedAll: boolean;
   @Input() deselectAll: boolean;
 
+  @Input()
+    set movieRow(movie: Movie) {
+    this.movie = movie;
+  }
 
-    @Output() onSelected = new EventEmitter<boolean>();
+  @Output() onSelected = new EventEmitter<boolean>();
 
+  @Output() onEdit = new EventEmitter<Movie>();
+  @Output() onRemove = new EventEmitter<Movie>();
    
-    private isSelected: number;
-    private selected = false;
-    private movies: Movie[] = [];
-
     constructor() { }
 
     ngOnChanges(changes) {
@@ -43,6 +50,15 @@ export class MovieRowComponent implements OnInit, OnChanges {
         this.onSelected.emit(agreed);
         this.selected = true;
     }
+
+    edit(movie: Movie) {
+      this.onEdit.emit(movie);
+    }
+
+    remove(movie: Movie) {
+      this.onRemove.emit(movie);
+    }
+
 
 
 }

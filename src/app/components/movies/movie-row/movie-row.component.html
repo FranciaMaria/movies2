@@ -1,11 +1,14 @@
 <ul>
-	<li class="list-group-item">ID: {{movieRow.id}}</li>
-	<li class="list-group-item">Name: {{movieRow.name}} <strong *ngIf="selected">SELECTED</strong><br></li>
-	<li class="list-group-item">Director: {{movieRow.director}}</li>
-	<li class="list-group-item">Image url: {{movieRow.imageUrl}}</li>
-	<li class="list-group-item">Duration [min]: {{movieRow.duration}}</li>
-	<li class="list-group-item">Release Date: {{movieRow.releaseDate  | date: "d MMMM yyyy"}}</li>
-	<li class="list-group-item">Genres: {{movieRow.genres}}</li>
+	<li class="list-group-item">ID: {{movie.id}}</li>
+	<li class="list-group-item">Name: <a [routerLink]="['/movies', movie.id]">{{movie.name}} <strong *ngIf="selected">SELECTED</strong><br></a></li>
+	<li class="list-group-item">Director: {{movie.director}}</li>
+	<li class="list-group-item">Image url: {{movie.imageUrl}}</li>
+	<li class="list-group-item">Duration [min]: {{movie.duration}}</li>
+	<li class="list-group-item">Release Date: {{movie.releaseDate  | date: "d MMMM yyyy"}}</li>
+	<li class="list-group-item">Genres: {{movie.genres}}</li>
 
 	<button class="btn btn-secondary" (click)="addMovie(true)" [disabled]="selected">Select</button>
+	<!-- <button class="btn btn-primary btn-sm" (click)="edit(movie)">Edit</button>
+	<button class="btn btn-danger btn-sm" (click)="remove(movie)">Remove</button> -->
+
 </ul>

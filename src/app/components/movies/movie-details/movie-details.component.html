@@ -1,0 +1,9 @@
+<ul *ngIf="movie">
+	<li class="list-group-item">ID: {{movie.id}}</li>
+	<li class="list-group-item">Name: {{movie.name}}</li>
+	<li class="list-group-item">Director: {{movie.director}}</li>
+	<li class="list-group-item">Image url: {{movie.imageUrl}}</li>
+	<li class="list-group-item">Duration [min]: {{movie.duration}}</li>
+	<li class="list-group-item">Release Date: {{movie.releaseDate  | date: "d MMMM yyyy"}}</li>
+	<li class="list-group-item">Genres: {{movie.genres}}</li>
+</ul>

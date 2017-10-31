@@ -17,7 +17,10 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { AuthService } from './shared/services/auth.service';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { RegisterFormComponent } from './components/auth/register/register-form/register-form.component';
-import { CustomFormsModule } from 'ng2-validation'
+import { CustomFormsModule } from 'ng2-validation';
+import { MovieResolver } from './shared/resolvers/movie.resolver';
+import { MovieDetailsComponent } from './components/movies/movie-details/movie-details.component';
+
 
 const appRoutes: Routes = [
   {
@@ -28,6 +31,13 @@ const appRoutes: Routes = [
   {
     path: 'movies',
     component: MoviesComponent
+  },
+  {
+    path: 'movies/:id',
+    component: MovieDetailsComponent,
+    resolve: {
+          movie: MovieResolver
+    }
   },
   {
     path: 'search/:term',
@@ -59,7 +69,8 @@ const appRoutes: Routes = [
     MovieFormComponent,
     LoginComponent,
     RegisterComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    MovieDetailsComponent
   ],
   imports: [
     FormsModule,
@@ -76,7 +87,7 @@ const appRoutes: Routes = [
     SearchComponent,
     SearchPageComponent
   ],
-  providers: [MoviesService, AuthService],
+  providers: [MoviesService, AuthService, MovieResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

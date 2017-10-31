@@ -169,13 +169,13 @@ export class MoviesService {
     });
   }
 
-  /*public getMovieById(id: number)
+   public getMovieById(id: number)
   {
     return new Observable((o: Observer<any>) => {
-      this.http.get('http://localhost:8000/api/movies/' + id
-        /*{
-          headers: this.moviesService.getRequestHeaders(),
-        }*//*)
+      this.http.get('http://localhost:8000/api/movies/' + id,
+        {
+          headers: this.authService.getRequestHeaders(),
+        })
         .subscribe(
           (movie: any) => {
             o.next(new Movie(movie.id, movie.name, movie.director, movie.imageUrl, movie.duration, movie.releaseDate, movie.genres));
@@ -183,20 +183,10 @@ export class MoviesService {
           }
         );
     });
-  }*/
-
-  public getContactById(id: number)
-  {
-    return new Observable((o: Observer<any>) => {
-      let existing = this.movies.filter(c => c.id == id);
-      if (existing.length) {
-        o.next(existing);
-        return o.complete();
-      } else {
-        return o.error('Not found');
-      }
-    });
   }
+
+
+  
 
 
 }

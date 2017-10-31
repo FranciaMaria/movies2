@@ -83,7 +83,6 @@ export class AuthService {
 	            return o.complete();
 	          },
 	          (err) => {
-	          	// samo proslediti
 	          	return o.error(err);
 	          }
 	        );
